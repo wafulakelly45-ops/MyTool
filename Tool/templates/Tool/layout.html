@@ -1,0 +1,36 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+<!-- link to the css file in the static folder-->
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<!-- The div for the navigation  -->
+<div class="sidenav">
+   <ul>
+  <li><a href="{% url 'index'%}">Home</a></li>  <!-- link to the home page -->
+   <a href="{% url 'logout' %}">Log Out</a><!-- link to logout view -->
+  <li><a href="{% url 'login'%}">Login</a></li><!-- link to login page -->
+  <li><a href="{% url 'add'%}">New Tool</a></li><!-- link to add new tool -->
+  <li><a href="{% url 'data'%}">Account</a></li><!-- link to the account page -->
+
+
+  </ul>
+</div>
+
+<div class="main">
+  
+    {%block body%}
+    {%endblock%}
+
+<!-- This block  links the javascript with this page -->
+{% block script %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+
+</body>
+</html> 

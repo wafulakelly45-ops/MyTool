@@ -1,0 +1,15 @@
+<!--This page displays the user info like the Name  and email address-->>
+{% extends "Tool/layout.html" %}
+
+{% block body %}
+    <h4>Account{{ request.user.first_name }}</h4>
+    <div class="user">
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+     </div>
+    
+
+
+{% endblock %}

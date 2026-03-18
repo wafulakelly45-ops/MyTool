@@ -1,0 +1,33 @@
+{% extends "Tool/layout.html"%}
+{% load static %}
+
+{% block body%}
+    <h1>Hacking Tools</h1>
+    <!-- Display the  signed in user-->
+    <div class="usr">
+        signed as: {{ request.user.username }}
+     </div>
+   
+<div class="main">
+       <!-- The for loop to display all the tools  on the main page-->
+      {% for tool in tools %} 
+      <a href="{% url 'tool' tool.id%}">
+       <div class="container">
+        <div class="color">
+            <ul>{{tool.Name}}</ul>
+            <img src="{{tool.cover.url}}">
+        </a>
+            <div class="para">
+              <!--<ul>{{tool.Description}}</ul>-->
+              <ul>{{tool.id}}</ul>
+            </div>
+        </div>
+      
+       </div>
+       
+      {% empty%}
+             <li> No tools found</li>
+      {% endfor %}
+  </div>
+{% endblock%}
+

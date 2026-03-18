@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: mytool
+    runtime: python
+    repo: https://github.com/yourusername/your-repo-name
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: DJANGO_ALLOWED_HOSTS
+        value: .onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mytool-db
+          property: connectionString
+
+databases:
+  - name: mytool-db
+    plan: free
+    region: oregon

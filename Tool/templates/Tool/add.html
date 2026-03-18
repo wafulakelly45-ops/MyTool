@@ -1,0 +1,14 @@
+{% extends "Tool/layout.html"%}
+{% block body%}
+
+  <H5>Add New Tool</H5>
+  <!-- a div container with the form to add New tools-->
+  <div class="frm">
+       <form action="{% url 'add'%}" method="post" enctype="multipart/form-data">
+          {% csrf_token%}
+          {{form}}
+          <button type="submit">Submit</button>
+    
+       </form>
+  </div>
+{% endblock%}
