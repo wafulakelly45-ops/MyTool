@@ -1,33 +1,14 @@
-{% extends "Tool/layout.html"%}
 {% load static %}
+<!-- ... -->
 
-{% block body%}
-    <h1>Hacking Tools</h1>
-    <!-- Display the  signed in user-->
-    <div class="usr">
-        signed as: {{ request.user.username }}
-     </div>
-   
-<div class="main">
-       <!-- The for loop to display all the tools  on the main page-->
-      {% for tool in tools %} 
-      <a href="{% url 'tool' tool.id%}">
-       <div class="container">
-        <div class="color">
-            <ul>{{tool.Name}}</ul>
-            <img src="{{tool.cover.url}}">
-        </a>
-            <div class="para">
-              <!--<ul>{{tool.Description}}</ul>-->
-              <ul>{{tool.id}}</ul>
-            </div>
-        </div>
-      
-       </div>
-       
-      {% empty%}
-             <li> No tools found</li>
-      {% endfor %}
-  </div>
-{% endblock%}
-
+{% for tool in tools %}
+<div class="tool">
+    {% if tool.cover %}
+        <img src="{{ tool.cover.url }}" alt="{{ tool.Name }}" style="width: 100px; height: 100px;">
+    {% else %}
+        <img src="{% static 'images/default-tool.png' %}" alt="Default" style="width: 100px; height: 100px;">
+    {% endif %}
+    <h3>{{ tool.Name }}</h3>
+    <p>{{ tool.Description|truncatechars:50 }}</p>
+</div>
+{% endfor %}
