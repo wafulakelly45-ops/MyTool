@@ -27,8 +27,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'root@root_')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# Allowed hosts - add your Render domain here
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1').split()
+
+
+# Allowed hosts - FIXED VERSION
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '.onrender.com,localhost,127.0.0.1').split(',')
+
+# CSRF Trusted Origins - FIXED VERSION
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', 'https://mytool-k014.onrender.com').split(',')
 
 
 # Application definition
